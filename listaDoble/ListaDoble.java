@@ -90,7 +90,45 @@ public class ListaDoble<T>{
      */
 
     public T remover(int pos) throws PosicionIlegalException{
+        if (pos < 0 || pos >= tamanio) {
+            throw new PosicionIlegalException();
+        }
+
+        T valor;
+        Nodo<T> auxremov;
+
+        if (pos == 0) { // Eliminar la cabeza
+            auxremov = cabeza;
+            cabeza = cabeza.getSiguiente();
+            if (cabeza != null) {
+                cabeza.setAnterior(null); // Enlace doble
+            } else {
+                cola = null; // La lista queda vacía
+            }
+        } else {
+            // Buscar el nodo a eliminar (Optimizamos el recorrido)
+            auxremov = (pos<tamanio/2) ?cabeza : cola;
+            
+            if (pos<tamanio/2) {
+                 for (int i= 0; i< pos; i++) auxremov = auxremov.getSiguiente();
+            } else {
+                 for (int i=tamanio-1; i>pos; i--) auxremov = auxremov.getAnterior();
+            }
+            
+            Nodo<T> anterior = auxremov.getAnterior();
+            Nodo<T> siguiente = auxremov.getSiguiente();
+
+            anterior.setSiguiente(siguiente);
+            if (siguiente != null) {
+                siguiente.setAnterior(anterior); 
+            } else {
+                cola = anterior; 
+            }
+        }
         
+        valor = auxremov.getValor();
+        tamanio--;
+        return valor;
         
     }
      /*
@@ -101,18 +139,26 @@ public class ListaDoble<T>{
      */
 
     
-     /*
-      * Elimina un nodo de la lista buscandolo por su
-        valor, si lo encuentra retorna la posición y lo 
-        elimina,si no lo encuentra retorna -1
-    
-
-      */
+     
      public int remover(T valor) throws PosicionIlegalException{
-        
-       
-        
+        Nodo<T> aux = cabeza;
+        int pos = 0;
+
+        while (aux != null) {
+            if (aux.getValor().equals(valor)) {
+                try {
+                    remover(pos); // Llama al método remover por posición
+                    return pos;
+                } catch (PosicionIlegalException e) {
+                    return -1;
+                }
+            }
+            aux = aux.getSiguiente();
+            pos++;
+        }
+        return -1; // Valor no encontrado
     }
+    
 
     /*
      * Devuelve el valor de una determinada posicion
@@ -153,17 +199,44 @@ public class ListaDoble<T>{
 
     @Override
     public String toString() {
-       
-
+       String resultado = "["; // Se crea el primer objeto String
+        
+        if (esVacia()) {
+            return "Lista Vacia";
+        }
+        
+        Nodo<T> aux = cabeza;
+        while (aux != null) {
+            // caada que se usa + se crea un strinmg 
+            resultado = resultado + aux.getValor().toString(); 
+            
+            if (aux.getSiguiente() != null) {
+                resultado = resultado + ", "; // Se crea otro nuevo objeto String
+            }
+            aux = aux.getSiguiente();
+        }
+        
+        resultado = resultado + "]"; // Se crea el objeto String final
+        return resultado;
     }
+    
+    
     /*
      * busca un valor en la lista
      * @return true si contiene ese valor
      * si no regresa false
      */
     public boolean contiene(T valor){
+        Nodo<T> aux = cabeza;
+        while (aux != null) {
+            if (aux.getValor().equals(valor)) {
+                return true;
+            }
+            aux = aux.getSiguiente();
+        }
+        return false;
+    }
         
     }
     
     
-}

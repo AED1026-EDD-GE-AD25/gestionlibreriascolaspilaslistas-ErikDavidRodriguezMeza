@@ -30,7 +30,7 @@ public class Libro {
 
     
     public String toString() {
-        return "Libro{" + "titulo='" + titulo + '\'' + ", autor='" + autor + '\'' + ", isbn='" + isbn + '\''+'}';
+        return "Libro" + "titulo='" + titulo + '\'' + ", autor='" + autor + '\'' + ", isbn='" + isbn + '\'';
     }
 
 }

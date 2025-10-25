@@ -26,7 +26,7 @@ public class Fecha {
         return anio;
     }
 
-  
+    @Override
     public String toString() {
         // Use el String.format() de antiguo codigo para que dia, mes y año tengan
 		//dos digitos
