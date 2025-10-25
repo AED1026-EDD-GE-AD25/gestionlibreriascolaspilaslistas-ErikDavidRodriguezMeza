@@ -24,7 +24,7 @@ public class Libreria{
 
     }
 
-    public void agregarLibro(){
+    public void agregarLibro(Libro, libro){
         
            
         
