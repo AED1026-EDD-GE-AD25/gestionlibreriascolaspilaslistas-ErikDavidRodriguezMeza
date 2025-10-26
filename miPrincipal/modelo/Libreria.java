@@ -32,8 +32,8 @@ public class Libreria{
         
     
 
-    public void obtenerLibros(){
-       
+    public ListaDoble<Libro> obtenerLibros(){
+       return listaLibros;
 
     }
 
