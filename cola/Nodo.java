@@ -1,17 +1,16 @@
+package cola;
 
 public class Nodo<T>{
-    //atributos
     private T valor;
-    private Nodo<T> siguiente;//referencia al siguiente nodo
-    private Nodo<T> anterior;//referencia al nodo anterior
-    //constructores
+    private Nodo<T> siguiente;//apunta al siguiente como lo vimos en clase
+    private Nodo<T> anterior;//apunta ak anterior
+    
     public Nodo(){
         valor =null;
         siguiente = null;
         anterior = null;
-
     }
-    //getter y setter
+    
     public T getValor() {
         return valor;
     }
@@ -30,8 +29,4 @@ public class Nodo<T>{
     public void setAnterior(Nodo<T> anterior) {
         this.anterior = anterior;
     }
-    
-    
-
-
 }
