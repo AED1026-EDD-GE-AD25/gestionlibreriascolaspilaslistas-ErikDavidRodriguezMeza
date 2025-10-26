@@ -24,7 +24,7 @@ public class Libreria{
 
     }
 
-    public void agregarLibro(Libro, libro){
+    public void agregarLibro(Libro libro){
         listaLibros.agregar(libro); 
         System.out.println("Libro agregado : " + libro.getTitulo());
     }
