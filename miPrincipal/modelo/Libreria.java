@@ -37,17 +37,19 @@ public class Libreria{
 
     }
 
-    public void agregarLibroCola(){
-
-        
+    public boolean agregarLibroCola(Libro libro){
+        colaLibros.encolar(libro);
+        System.out.println("Se agrego el libro: " + libro.getTitulo());
+        return true;
+        //use el emcola para agregar libros
 
     }
 
     public void obtenerLibroCola(){
 
-       
-        
 
+       
+    
     }
     public voic obtenerLibroPila(){
         
