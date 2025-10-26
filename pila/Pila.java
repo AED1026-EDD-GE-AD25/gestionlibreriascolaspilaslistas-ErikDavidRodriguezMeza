@@ -1,70 +1,54 @@
 package pila;
 
-// import javax.swing.event.CaretEvent;
-
 public class Pila<T> {
 
-    private Nodo<T> Cabeza;
-    private int Tamanio;
+    
+    private Nodo<T> cima; 
+    private int tamanio; 
 
     public Pila() {
-        Cabeza = null;
-        Tamanio = 0;
-
+        cima = null;
+        tamanio = 0;
     }
 
     public int getTamanio() {
-
-        return Tamanio;
+        return tamanio;
     }
 
     public boolean esVacia(){
-
-        return(Cabeza == null);
+        return(cima == null);
     }
 
-    public int buscar(T valor){
-        int posi = -1;
-
-        Pila<T> buscar = new Pila<T>();
-        // Pila<T> aux = new Pila<T>();
-        buscar.apilar(valor);
-
-        for(int i = 0; i < Tamanio; i++){
-            if(buscar.cima() == Cabeza){
-                posi = i;
-            }else{
-                buscar.retirar();
-            }
-        }
-
-        return posi;
-    }
+   // quite el metodo buscar que tenia antes porque modificada la pola
 
     public void apilar(T valor){
-        Nodo<T> nuevo = new Nodo<T>();
+        Nodo<T> nuevo = new Nodo<>();
         
         nuevo.setValor(valor);
         if(esVacia()){
-            Cabeza = nuevo;
+            cima = nuevo;
         }else{
-            nuevo.setSiguiente(Cabeza);
-            Cabeza = nuevo;
+            nuevo.setSiguiente(cima);
+            cima = nuevo;
         }
 
-        Tamanio++;
+        tamanio++;
     }
 
-    public void retirar(){
-        if(!esVacia()){
-            Cabeza = Cabeza.getSiguiente();
-            Tamanio--;
+    
+    public T retirar(){
+        if(esVacia()){
+            return null; 
         }
+        T valor = cima.getValor();
+        cima = cima.getSiguiente();
+        tamanio--;
+        return valor; // devolver el valort retirado
     }
 
     public T cima(){
         if(!esVacia()){
-            return Cabeza.getValor();
+            return cima.getValor();
         }else{
             return null;
         }
