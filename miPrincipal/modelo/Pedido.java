@@ -1,6 +1,6 @@
 package miPrincipal.modelo;
 
-import util.Fecha;
+import utilerias.Fecha;
 
 public class Pedido {
     private Libro libro;

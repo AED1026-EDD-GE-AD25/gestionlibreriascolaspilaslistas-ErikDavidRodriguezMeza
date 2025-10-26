@@ -145,6 +145,13 @@ public Libro buscarLibro(String isbn) {
         System.out.println("Libro " +isbn+"no encontrado");
         return null;
     }
+    public void mostrarLibrosLista() {
+    System.out.println("libros disponibles: ");
+    
+    System.out.println(listaLibros.toString()); 
+    System.out.println("tamaño: " + listaLibros.getTamanio());
+    System.out.println();
+}
 }
 
 

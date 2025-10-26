@@ -138,9 +138,9 @@ public class ListaDoble<T>{
    
     public T getValor(int pos) throws PosicionIlegalException{
         if(pos >= 0 && pos < tamanio){
-           
+           Nodo<T> aux = cabeza;
             for(int i=0; i<pos; i++){ 
-                aux = aux.getSiguiente();
+                aux =aux.getSiguiente();
             }
             return aux.getValor();
         }else{
