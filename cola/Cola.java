@@ -1,6 +1,6 @@
 package cola;
 
-
+//este mensaje no importa
 
 public class Cola<T> {
 
