@@ -57,7 +57,7 @@ public class Libreria{
   
     public Libro obtenerLibroPila(){
         
-        Libro libro =pilaLibrosEliminados.cima();
+        Libro libro =pilaLibrosEliminados.cima(); 
         if (libro!= null) {
             System.out.println("tope de pila: " + libro.getTitulo());
         } else {
@@ -71,7 +71,9 @@ public Cola<Libro> mostrarReservaLibros(){
     }
     
 public Libro crearLibro(String titulo, String autor, String isbn){
-        return new Libro(titulo, autor, isbn);
+       Libro nuevoLibro = new Libro(titulo, autor, isbn);
+        
+        return nuevoLibro;
     }
 
     public Pedido crearPedido(Libro libro, Fecha fecha){
