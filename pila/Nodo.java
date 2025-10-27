@@ -1,4 +1,4 @@
-package listaDoble;
+package pila;
 
 public class Nodo<T>{
     private T valor;
